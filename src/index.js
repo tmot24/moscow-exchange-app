@@ -1,17 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Provider} from "react-redux";
+import {BrowserRouter as Router} from "react-router-dom";
+
+import App from './components/app/App';
+import ErrorBoundary from "./components/error/error-boundary";
+import ExchangeService from "./services/exchange-service";
+import ExchangeServiceContext from "./components/exchange-service-context/exchange-service-context";
+import store from "./store";
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+
+const exchangeService = new ExchangeService();
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <Provider store={store}>
+            <ErrorBoundary>
+                <ExchangeServiceContext.Provider value={exchangeService}>
+                    <Router>
+                        <App/>
+                    </Router>
+                </ExchangeServiceContext.Provider>
+            </ErrorBoundary>
+        </Provider>
+    </React.StrictMode>,
+    document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
