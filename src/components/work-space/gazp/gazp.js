@@ -4,7 +4,7 @@ import WithExchangeService from "../../hoc/with-exchange-service";
 import {connect} from "react-redux";
 import Spinner from "../../spinner/spinner";
 import {sharesLoaded, sharesRequested} from "../../../actions/actions";
-import Share from "../classes/share";
+import {ShareMarketData, ShareSecurities} from "../classes/shareMarketData";
 
 class Gazp extends React.Component {
 
@@ -16,35 +16,43 @@ class Gazp extends React.Component {
             .then(obj => {
                 console.log(`Объект из reducer`);
                 console.log(obj);
-                const share = new Share(...obj.marketdata.data[0]);
-                console.log(`Класс share`);
-                console.log(share);
+                const shareMarketData = new ShareMarketData(...obj.marketdata.data[0]);
+                console.log(`Класс shareMarketData`);
+                console.log(shareMarketData);
+                const shareSecurities = new ShareSecurities(...obj.securities.data[0]);
+                console.log(`Класс shareSecurities`);
+                console.log(shareMarketData);
                 return {
-                    prise: share.last,
-                    title: share.longTitle("last"),
+                    shareMarketData: shareMarketData,
+                    shareSecurities: shareSecurities,
                 };
             })
             // Запись в store
             .then(result => this.props.sharesLoaded(result));
 
-        fetch("https://iss.moex.com/iss/engines/stock/markets/shares/boards/TQBR/securities/columns.json")
-            .then(prom => prom.json())
-            .then(json => {
-                for (let i = 0; i <= 55; i++) {
-                    console.log(json.marketdata.data[i][3])
-                }
-            });
+//         fetch("https://iss.moex.com/iss/engines/stock/markets/shares/boards/TQBR/securities/columns.json")
+//             .then(prom => prom.json())
+//             .then(json => console.log(json))
+// /*            .then(json => {
+//                     for (let i = 0; i <= 27; i++) {
+//                         console.log(json.securities.data[i][3]);
+//                     }
+//
+//                 }
+//             );*/
     }
 
     render() {
-        const {sharePrice, loading} = this.props;
+        const {share, loading} = this.props;
 
         if (loading) {
             return <Spinner/>;
         }
         return (
             <header className="App-header">
-                {sharePrice.title} {sharePrice.prise}
+                {share.shareSecurities.secid} {share.shareSecurities.shortname}
+                <br/>
+                {share.shareMarketData.longTitle("last")} {share.shareMarketData.last}
             </header>
         );
     }
@@ -52,7 +60,7 @@ class Gazp extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        sharePrice: state.shares,
+        share: state.shares,
         loading: state.loading,
     };
 };

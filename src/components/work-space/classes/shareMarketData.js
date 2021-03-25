@@ -1,4 +1,4 @@
-export default class Share {
+class ShareMarketData {
     constructor(secid, boardid, bid, biddepth, offer, offerdepth, spread, biddeptht, offerdeptht, open, low, high, last, lastchange, lastchangeprcnt, qty, value, value_usd, waprice, lastcngtolastwaprice, waptoprevwapriceprcnt, waptoprevwaprice, closeprice, marketpricetoday, marketprice, lasttoprevprice, numtrades, voltoday, valtoday, valtoday_usd, etfsettleprice, tradingstatus, updatetime, admittedquote, lastbid, lastoffer, lcloseprice, lcurrentprice, marketprice2, numbids, numoffers, change, time, highbid, lowoffer, priceminusprevwaprice, openperiodprice, seqnum, systime, closingauctionprice, closingauctionvolume, issuecapitalization, issuecapitalization_updatetime, etfsettlecurrency, valtoday_rur, tradingsession) {
         this.secid = secid;
         this.boardid = boardid;
@@ -299,3 +299,171 @@ export default class Share {
     }
 
 }
+
+class ShareSecurities {
+    constructor(secid, boardid, shortname, prevprice, lotsize, facevalue, status, boardname, decimals, secname, remarks, marketcode, instrid, sectorid, minstep, prevwaprice, faceunit, prevdate, issuesize, isin, latname, regnumber, prevlegalcloseprice, prevadmittedquote, currencyid, sectype, listlevel, settledate) {
+        this.secid = secid;
+        this.boardid = boardid;
+        this.shortname = shortname;
+        this.prevprice = prevprice;
+        this.lotsize = lotsize;
+        this.facevalue = facevalue;
+        this.status = status;
+        this.boardname = boardname;
+        this.decimals = decimals;
+        this.secname = secname;
+        this.remarks = remarks;
+        this.marketcode = marketcode;
+        this.instrid = instrid;
+        this.sectorid = sectorid;
+        this.minstep = minstep;
+        this.prevwaprice = prevwaprice;
+        this.faceunit = faceunit;
+        this.prevdate = prevdate;
+        this.issuesize = issuesize;
+        this.isin = isin;
+        this.latname = latname;
+        this.regnumber = regnumber;
+        this.prevlegalcloseprice = prevlegalcloseprice;
+        this.prevadmittedquote = prevadmittedquote;
+        this.currencyid = currencyid;
+        this.sectype = sectype;
+        this.listlevel = listlevel;
+        this.settledate = settledate;
+    }
+
+    shortTitle(value) {
+        switch (value) {
+            case "secid":
+                return "Код инструмента";
+            case "boardid":
+                return "Код режима";
+            case "shortname":
+                return "Кратк. наим.";
+            case "prevprice":
+                return "Последняя предыдущего дня";
+            case "lotsize":
+                return "Размер лота";
+            case "facevalue":
+                return "Номинал";
+            case "status":
+                return "Статус";
+            case "boardname":
+                return "Режим торгов";
+            case "decimals":
+                return "Точность";
+            case "secname":
+                return "Наименование";
+            case "remarks":
+                return "Примечание";
+            case "marketcode":
+                return "Рынок";
+            case "instrid":
+                return "Группа инструментов";
+            case "sectorid":
+                return "Сектор";
+            case "minstep":
+                return "Мин. шаг цены";
+            case "prevwaprice":
+                return "Оценка пред. дня";
+            case "faceunit":
+                return "Валюта номинала";
+            case "prevdate":
+                return "Дата последних торгов";
+            case "issuesize":
+                return "Объем выпуска";
+            case "isin":
+                return "ISIN";
+            case "latname":
+                return "Англ. наименование";
+            case "regnumber":
+                return "Регистрационный номер";
+            case "prevlegalcloseprice":
+                return "Цена закрытия предыдущего дня";
+            case "prevadmittedquote":
+                return "Признаваемая котировка предыдущего дня";
+            case "currencyid":
+                return "Валюта";
+            case "sectype":
+                return "Тип ценной бумаги";
+            case "listlevel":
+                return "Уровень листинга";
+            case "settledate":
+                return "Дата расчетов";
+
+            default:
+                return "Ошибка в названии искомого поля";
+        }
+    }
+
+    longTitle(value) {
+        switch (value) {
+            case "secid":
+                return "Идентификатор финансового инструмента";
+            case "boardid":
+                return "Идентификатор режима торгов";
+            case "shortname":
+                return "Краткое наименование ценной бумаги";
+            case "prevprice":
+                return "Цена последней сделки нормального периода предыдущего торгового дня";
+            case "lotsize":
+                return "Количество ценных бумаг в одном стандартном лоте";
+            case "facevalue":
+                return "Номинальная стоимость одной ценной бумаги, в валюте инструмента";
+            case "status":
+                return "Индикатор 'торговые операции разрешены/запрещены'";
+            case "boardname":
+                return "Режим торгов";
+            case "decimals":
+                return "Точность, знаков после запятой";
+            case "secname":
+                return "Наименование финансового инструмента";
+            case "remarks":
+                return "Примечание";
+            case "marketcode":
+                return "Идентификатор рынка на котором торгуется финансовый инструмент";
+            case "instrid":
+                return "Группа инструментов";
+            case "sectorid":
+                return "Сектор (Устарело)";
+            case "minstep":
+                return "Минимально возможная разница между ценами, указанными в заявках на покупку/продажу ценных бумаг";
+            case "prevwaprice":
+                return "Значение оценки (WAPRICE) предыдущего торгового дня";
+            case "faceunit":
+                return "Код валюты, в которой выражен номинал ценной бумаги";
+            case "prevdate":
+                return "Дата предыдущего торгового дня";
+            case "issuesize":
+                return "Объем выпуска";
+            case "isin":
+                return "Международный идентификационный код ценной бумаги";
+            case "latname":
+                return "Наименование финансового инструмента на английском языке";
+            case "regnumber":
+                return "Номер государственной регистрации";
+            case "prevlegalcloseprice":
+                return "Официальная цена закрытия предыдущего дня, рассчитываемая по методике ФСФР";
+            case "prevadmittedquote":
+                return "Признаваемая котировка предыдущего дня, цена за одну ценную бумагу";
+            case "currencyid":
+                return "Валюта расчетов";
+            case "sectype":
+                return "Тип ценной бумаги";
+            case "listlevel":
+                return "Уровень листинга";
+            case "settledate":
+                return "Дата расчетов сделки";
+
+            default:
+                return "Ошибка в названии искомого поля";
+        }
+    }
+
+}
+
+
+export {
+    ShareMarketData,
+    ShareSecurities,
+};
