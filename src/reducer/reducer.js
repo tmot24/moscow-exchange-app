@@ -1,5 +1,5 @@
 const initialState = {
-    shares: [],
+    shares: {},
     loading: true,
 };
 
