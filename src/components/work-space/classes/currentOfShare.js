@@ -1,4 +1,4 @@
-class ShareMarketData {
+class CurrentOfShare {
     constructor(secid, boardid, bid, biddepth, offer, offerdepth, spread, biddeptht, offerdeptht, open, low, high, last, lastchange, lastchangeprcnt, qty, value, value_usd, waprice, lastcngtolastwaprice, waptoprevwapriceprcnt, waptoprevwaprice, closeprice, marketpricetoday, marketprice, lasttoprevprice, numtrades, voltoday, valtoday, valtoday_usd, etfsettleprice, tradingstatus, updatetime, admittedquote, lastbid, lastoffer, lcloseprice, lcurrentprice, marketprice2, numbids, numoffers, change, time, highbid, lowoffer, priceminusprevwaprice, openperiodprice, seqnum, systime, closingauctionprice, closingauctionvolume, issuecapitalization, issuecapitalization_updatetime, etfsettlecurrency, valtoday_rur, tradingsession) {
         this.secid = secid;
         this.boardid = boardid;
@@ -411,7 +411,7 @@ class ShareSecurities {
             case "facevalue":
                 return "Номинальная стоимость одной ценной бумаги, в валюте инструмента";
             case "status":
-                return "Индикатор 'торговые операции разрешены/запрещены'";
+                return `Индикатор "торговые операции разрешены/запрещены"`;
             case "boardname":
                 return "Режим торгов";
             case "decimals":
@@ -464,6 +464,6 @@ class ShareSecurities {
 
 
 export {
-    ShareMarketData,
+    CurrentOfShare,
     ShareSecurities,
 };
