@@ -17,3 +17,17 @@ export const sharesRequested = () => {
         type: "SHARES_REQUESTED",
     };
 };
+
+export const trueCharted = (newTrueChart) => {
+    return {
+        type: "TRUE_CHART",
+        payload: newTrueChart,
+    }
+}
+
+export const trueShared = (newTrueShare) => {
+    return {
+        type: "TRUE_SHARE",
+        payload: newTrueShare,
+    }
+}

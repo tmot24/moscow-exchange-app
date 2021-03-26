@@ -2,6 +2,8 @@ const initialState = {
     shares: {},
     chart: [],
     loading: true,
+    trueChart: [],
+    trueShare: 123,
 };
 
 const reducer = (state = initialState, action) => {
@@ -25,6 +27,20 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 loading: true,
             };
+
+        case "TRUE_CHART":
+            return  {
+                ...state,
+                trueChart: action.payload,
+                loading: false,
+            }
+
+        case "TRUE_SHARE":
+            return  {
+                ...state,
+                trueShare: action.payload,
+                loading: false,
+            }
 
         default:
             return state;

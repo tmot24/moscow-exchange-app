@@ -3,40 +3,41 @@ import React from "react";
 import WithExchangeService from "../../hoc/with-exchange-service";
 import {connect} from "react-redux";
 import Spinner from "../../spinner/spinner";
-import {sharesLoaded, sharesRequested} from "../../../actions/actions";
+import {trueShared} from "../../../actions/actions";
 import {ShareMarketData, ShareSecurities} from "../classes/currentOfShare";
 
 class Gazp extends React.Component {
 
     componentDidMount() {
-        this.props.sharesRequested();
+        // this.props.sharesRequested();
         // Получение объекта из API
         const {ExchangeService} = this.props;
-                ExchangeService.getCurrentGAZP()
-                    .then(obj => {
-                        const shareMarketData = new ShareMarketData(...obj.marketdata.data[0]);
-                        const shareSecurities = new ShareSecurities(...obj.securities.data[0]);
-                        // console.log(shareSecurities)
-                        return {
-                            shareMarketData: shareMarketData,
-                            shareSecurities: shareSecurities,
-                        };
-                    })
-                    // Запись в store
-                    .then(result => this.props.sharesLoaded(result));
+        ExchangeService.getCurrentGAZP()
+            .then(obj => {
+                const shareMarketData = new ShareMarketData(...obj.marketdata.data[0]);
+                const shareSecurities = new ShareSecurities(...obj.securities.data[0]);
+                return [shareMarketData, shareSecurities];
+            })
+            // Запись в store
+            .then(result => {
+                this.props.trueShared(result);
+            });
     }
 
     render() {
-        const {shares, loading} = this.props;
+        const {trueShare, loading} = this.props;
+        console.log(trueShare)
+        const shareMarketData = trueShare[0];
+        const shareSecurities = trueShare[1];
 
         if (loading) {
             return <Spinner/>;
         }
         return (
             <header className="App-header">
-                {shares.shareSecurities.secid} {shares.shareSecurities.shortname}
+                {shareSecurities.secid} {shareSecurities.shortname}
                 <br/>
-                {shares.shareMarketData.longTitle("last")} {shares.shareMarketData.last}
+                {shareMarketData.longTitle("last")} {shareMarketData.last}
             </header>
         );
     }
@@ -44,14 +45,13 @@ class Gazp extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        shares: state.shares,
+        trueShare: state.trueShare,
         loading: state.loading,
     };
 };
 
 const mapDispatchToProps = {
-    sharesLoaded,
-    sharesRequested,
+    trueShared,
 };
 
 export default WithExchangeService()(connect(mapStateToProps, mapDispatchToProps)(Gazp));
