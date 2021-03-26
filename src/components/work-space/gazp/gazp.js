@@ -4,7 +4,7 @@ import WithExchangeService from "../../hoc/with-exchange-service";
 import {connect} from "react-redux";
 import Spinner from "../../spinner/spinner";
 import {sharesLoaded, sharesRequested} from "../../../actions/actions";
-import {CurrentOfShare, ShareSecurities} from "../classes/currentOfShare";
+import {ShareMarketData, ShareSecurities} from "../classes/currentOfShare";
 import HistoryOfShare from "../classes/historyOfShare";
 
 class Gazp extends React.Component {
