@@ -5,6 +5,13 @@ export const sharesLoaded = (newShares) => {
     };
 };
 
+export const chartLoaded = (newChart) => {
+    return {
+        type: "CHART_LOADED",
+        payload: newChart,
+    };
+};
+
 export const sharesRequested = () => {
     return {
         type: "SHARES_REQUESTED",

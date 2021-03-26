@@ -5,7 +5,6 @@ import {connect} from "react-redux";
 import Spinner from "../../spinner/spinner";
 import {sharesLoaded, sharesRequested} from "../../../actions/actions";
 import {ShareMarketData, ShareSecurities} from "../classes/currentOfShare";
-import HistoryOfShare from "../classes/historyOfShare";
 
 class Gazp extends React.Component {
 
@@ -13,46 +12,31 @@ class Gazp extends React.Component {
         this.props.sharesRequested();
         // Получение объекта из API
         const {ExchangeService} = this.props;
-        /*        ExchangeService.getCurrentGAZP()
+                ExchangeService.getCurrentGAZP()
                     .then(obj => {
-                        console.log(obj)
                         const shareMarketData = new ShareMarketData(...obj.marketdata.data[0]);
                         const shareSecurities = new ShareSecurities(...obj.securities.data[0]);
+                        // console.log(shareSecurities)
                         return {
                             shareMarketData: shareMarketData,
                             shareSecurities: shareSecurities,
                         };
                     })
                     // Запись в store
-                    .then(result => this.props.sharesLoaded(result));*/
-
-        ExchangeService.getHistoryGAZP()
-            .then(obj => {
-                console.log(obj.history);
-                const historyOfShare = new HistoryOfShare(...obj.history.data[0]);
-                console.log(historyOfShare);
-                return {
-                    historyOfShare: historyOfShare,
-                };
-            })
-            // Запись в store
-            .then(result => this.props.sharesLoaded(result));
+                    .then(result => this.props.sharesLoaded(result));
     }
 
     render() {
-        const {share, loading} = this.props;
+        const {shares, loading} = this.props;
 
         if (loading) {
             return <Spinner/>;
         }
         return (
             <header className="App-header">
-{/*                {share.shareSecurities.secid} {share.shareSecurities.shortname}
+                {shares.shareSecurities.secid} {shares.shareSecurities.shortname}
                 <br/>
-                {share.shareMarketData.longTitle("last")} {share.shareMarketData.last}*/}
-                {share.historyOfShare.secid} {share.historyOfShare.shortname}
-                <br/>
-                {share.historyOfShare.tradedate} {share.historyOfShare.close}
+                {shares.shareMarketData.longTitle("last")} {shares.shareMarketData.last}
             </header>
         );
     }
@@ -60,7 +44,7 @@ class Gazp extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        share: state.shares,
+        shares: state.shares,
         loading: state.loading,
     };
 };
