@@ -16,7 +16,7 @@ class Gazp extends React.Component {
         /*        ExchangeService.getCurrentGAZP()
                     .then(obj => {
                         console.log(obj)
-                        const shareMarketData = new CurrentOfShare(...obj.marketdata.data[0]);
+                        const shareMarketData = new ShareMarketData(...obj.marketdata.data[0]);
                         const shareSecurities = new ShareSecurities(...obj.securities.data[0]);
                         return {
                             shareMarketData: shareMarketData,
