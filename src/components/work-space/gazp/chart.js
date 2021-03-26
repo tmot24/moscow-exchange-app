@@ -3,13 +3,13 @@ import React from "react";
 import WithExchangeService from "../../hoc/with-exchange-service";
 import {connect} from "react-redux";
 import Spinner from "../../spinner/spinner";
-import {trueCharted} from "../../../actions/actions";
+import {chartLoaded, requested} from "../../../actions/actions";
 import {Bars, Chart as Charts} from 'rumble-charts';
 
 class Chart extends React.Component {
 
     componentDidMount() {
-        // this.props.sharesRequested();
+        this.props.requested();
         // Получение объекта из API
         const {ExchangeService} = this.props;
         ExchangeService.getHistoryGAZP()
@@ -25,20 +25,20 @@ class Chart extends React.Component {
                 }];
             })
             // Запись в store
-            .then(result => this.props.trueCharted(result));
+            .then(result => this.props.chartLoaded(result));
 
 
     }
 
     render() {
-        const {trueChart, loading} = this.props;
+        const {chart, loading} = this.props;
 
         if (loading) {
             return <Spinner/>;
         }
         return (
             <header className="App-header">
-                <Charts width={600} height={250} minY={0} series={trueChart}>
+                <Charts width={600} height={250} minY={0} series={chart}>
                     <Bars/>
                 </Charts>
             </header>
@@ -47,13 +47,14 @@ class Chart extends React.Component {
 }
 const mapStateToProps = (state) => {
     return {
-        trueChart: state.trueChart,
+        chart: state.chart,
         loading: state.loading,
     };
 };
 
 const mapDispatchToProps = {
-    trueCharted,
+    chartLoaded,
+    requested,
 };
 
 export default WithExchangeService()(connect(mapStateToProps, mapDispatchToProps)(Chart));

@@ -1,19 +1,18 @@
 const initialState = {
-    shares: {},
-    chart: [],
+    shareArr: null,
+    chart: null,
     loading: true,
-    trueChart: [],
-    trueShare: 123,
 };
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case "SHARES_LOADED":
+        case "SHARE_LOADED":
             return {
                 ...state,
-                shares: action.payload,
+                shareArr: action.payload,
                 loading: false,
             };
+
         case "CHART_LOADED":
             return {
                 ...state,
@@ -21,26 +20,11 @@ const reducer = (state = initialState, action) => {
                 loading: false,
             };
 
-
-        case "SHARES_REQUESTED":
+        case "REQUESTED":
             return {
                 ...state,
                 loading: true,
             };
-
-        case "TRUE_CHART":
-            return  {
-                ...state,
-                trueChart: action.payload,
-                loading: false,
-            }
-
-        case "TRUE_SHARE":
-            return  {
-                ...state,
-                trueShare: action.payload,
-                loading: false,
-            }
 
         default:
             return state;

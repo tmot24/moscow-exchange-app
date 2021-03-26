@@ -3,13 +3,13 @@ import React from "react";
 import WithExchangeService from "../../hoc/with-exchange-service";
 import {connect} from "react-redux";
 import Spinner from "../../spinner/spinner";
-import {trueShared} from "../../../actions/actions";
+import {shareLoaded, requested} from "../../../actions/actions";
 import {ShareMarketData, ShareSecurities} from "../classes/currentOfShare";
 
 class Gazp extends React.Component {
 
     componentDidMount() {
-        // this.props.sharesRequested();
+        this.props.requested();
         // Получение объекта из API
         const {ExchangeService} = this.props;
         ExchangeService.getCurrentGAZP()
@@ -20,38 +20,40 @@ class Gazp extends React.Component {
             })
             // Запись в store
             .then(result => {
-                this.props.trueShared(result);
+                this.props.shareLoaded(result);
             });
     }
 
     render() {
-        const {trueShare, loading} = this.props;
-        console.log(trueShare)
-        const shareMarketData = trueShare[0];
-        const shareSecurities = trueShare[1];
+        const {shareArr, loading} = this.props;
 
-        if (loading) {
+        if (loading || !shareArr) {
             return <Spinner/>;
+        } else {
+            const shareMarketData = shareArr[0];
+            const shareSecurities = shareArr[1];
+
+            return (
+                <header className="App-header">
+                    {shareSecurities.secid} {shareSecurities.shortname}
+                    <br/>
+                    {shareMarketData.longTitle("last")} {shareMarketData.last}
+                </header>
+            );
         }
-        return (
-            <header className="App-header">
-                {shareSecurities.secid} {shareSecurities.shortname}
-                <br/>
-                {shareMarketData.longTitle("last")} {shareMarketData.last}
-            </header>
-        );
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-        trueShare: state.trueShare,
+        shareArr: state.shareArr,
         loading: state.loading,
     };
 };
 
 const mapDispatchToProps = {
-    trueShared,
+    shareLoaded,
+    requested,
 };
 
 export default WithExchangeService()(connect(mapStateToProps, mapDispatchToProps)(Gazp));

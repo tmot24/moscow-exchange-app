@@ -1,7 +1,7 @@
-export const sharesLoaded = (newShares) => {
+export const shareLoaded = (newShare) => {
     return {
-        type: "SHARES_LOADED",
-        payload: newShares,
+        type: "SHARE_LOADED",
+        payload: newShare,
     };
 };
 
@@ -12,22 +12,8 @@ export const chartLoaded = (newChart) => {
     };
 };
 
-export const sharesRequested = () => {
+export const requested = () => {
     return {
-        type: "SHARES_REQUESTED",
+        type: "REQUESTED",
     };
 };
-
-export const trueCharted = (newTrueChart) => {
-    return {
-        type: "TRUE_CHART",
-        payload: newTrueChart,
-    }
-}
-
-export const trueShared = (newTrueShare) => {
-    return {
-        type: "TRUE_SHARE",
-        payload: newTrueShare,
-    }
-}
