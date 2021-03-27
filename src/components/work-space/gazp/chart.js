@@ -4,7 +4,7 @@ import WithExchangeService from "../../hoc/with-exchange-service";
 import {connect} from "react-redux";
 import Spinner from "../../spinner/spinner";
 import {chartLoaded, requested} from "../../../actions/actions";
-import {Lines, Layer, Ticks, Title, Chart as Charts} from 'rumble-charts';
+import {Lines, Layer, Ticks, Title, Labels, Chart as Charts} from 'rumble-charts';
 
 class Chart extends React.Component {
 
@@ -31,19 +31,39 @@ class Chart extends React.Component {
         if (loading || !chart) {
             return <Spinner/>;
         } else {
-            console.log(chart)
             const dataTitle = chart[0];
+            const date = chart[1].map(elem => elem[0]);
             const array = chart[1].map(elem => elem[1]);
             const series = [{
                 name: `${dataTitle}`, // optional
                 // ... other attributes
                 data: array
             }]
-
             return (
                 <header className="App-header">
-                    <Charts width={1000} height={1000} minY={0} series={series}>
+                    <Charts width={1000} height={500} minY={Math.min(...array)} series={series}>
                         <Layer width='80%' height='90%' position='top center'>
+                            <Ticks
+                                axis='y'
+                                lineLength='100%'
+                                lineVisible={true}
+                                lineStyle={{stroke:'lightgray'}}
+                                labelStyle={{textAnchor:'end',alignmentBaseline:'middle',fontSize:'0.5em',fill:'lightgray'}}
+                                labelAttributes={{x: -5}}
+                            />
+                            <Ticks
+                                axis='x'
+                                label={({tick}) => tick.x + 1}
+                                labelStyle={{textAnchor:'middle',alignmentBaseline:'before-edge',fontSize:'0.5em',fill:'lightgray'}}
+                                labelAttributes={{y: 3}}
+                            />
+{/*                            <Labels
+                                label={({point}) => point.y}
+                                dotStyle={{
+                                    alignmentBaseline:'after-edge',
+                                    textAnchor:'middle'
+                                }}
+                            />*/}
                             <Lines/>
                         </Layer>
                     </Charts>

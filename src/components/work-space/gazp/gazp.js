@@ -37,7 +37,7 @@ class Gazp extends React.Component {
                 <header className="App-header">
                     {shareSecurities.secid} {shareSecurities.shortname}
                     <br/>
-                    {shareMarketData.longTitle("last")} сегодня {shareMarketData.last}
+                    {shareMarketData.longTitle("last")} {shareMarketData.last}
                 </header>
             );
         }
