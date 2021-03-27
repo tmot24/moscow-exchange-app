@@ -32,16 +32,15 @@ class Chart extends React.Component {
             return <Spinner/>;
         } else {
             const dataTitle = chart[0];
-            const date = chart[1].map(elem => elem[0]);
-            const array = chart[1].map(elem => elem[1]);
+            const array = chart[1].map(elem => [elem[0], elem[1]]);
+            const data = array.map(([label , y]) => ({ label, y }))
             const series = [{
                 name: `${dataTitle}`, // optional
-                // ... other attributes
-                data: array
+                data: data
             }]
             return (
                 <header className="App-header">
-                    <Charts width={1000} height={500} minY={Math.min(...array)} series={series}>
+                    <Charts width={1000} height={500} minY={210} series={series}>
                         <Layer width='80%' height='90%' position='top center'>
                             <Ticks
                                 axis='y'
@@ -53,17 +52,10 @@ class Chart extends React.Component {
                             />
                             <Ticks
                                 axis='x'
-                                label={({tick}) => tick.x + 1}
+                                label={({ index, props }) => props.series[0].data[index].label}
                                 labelStyle={{textAnchor:'middle',alignmentBaseline:'before-edge',fontSize:'0.5em',fill:'lightgray'}}
-                                labelAttributes={{y: 3}}
+                                labelAttributes={{y: 1}}
                             />
-{/*                            <Labels
-                                label={({point}) => point.y}
-                                dotStyle={{
-                                    alignmentBaseline:'after-edge',
-                                    textAnchor:'middle'
-                                }}
-                            />*/}
                             <Lines/>
                         </Layer>
                     </Charts>
