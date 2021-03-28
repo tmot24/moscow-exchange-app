@@ -1,7 +1,7 @@
 import './App.css';
 import React from "react";
 import Gazp from "../work-space/gazp/gazp";
-import MyChart from "../work-space/gazp/chart";
+import MyChart from "../work-space/gazp/charts/chart";
 
 
 const App = () => {
