@@ -1,9 +1,9 @@
-import "../../../app/App.css";
+import "../../app/App.css";
 import React from "react";
-import WithExchangeService from "../../../hoc/with-exchange-service";
+import WithExchangeService from "../../hoc/with-exchange-service";
 import {connect} from "react-redux";
-import Spinner from "../../../spinner/spinner";
-import {chartLoaded, requested} from "../../../../actions/actions";
+import Spinner from "../../spinner/spinner";
+import {chartLoaded, requested} from "../../../actions/actions";
 import MyChart from "./crash-area";
 
 

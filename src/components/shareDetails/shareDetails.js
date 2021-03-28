@@ -1,12 +1,13 @@
-import "../../app/App.css";
+import "../app/App.css";
 import React from "react";
-import WithExchangeService from "../../hoc/with-exchange-service";
+import WithExchangeService from "../hoc/with-exchange-service";
 import {connect} from "react-redux";
-import Spinner from "../../spinner/spinner";
-import {shareLoaded, requested} from "../../../actions/actions";
+import {shareLoaded, requested} from "../../actions/actions";
 import {ShareMarketData, ShareSecurities} from "../classes/currentOfShare";
+import ShareTitle from "./shareTitle/shareTitle";
+import Chart from "./chartShare/chart";
 
-class Gazp extends React.Component {
+class ShareDetails extends React.Component {
 
     componentDidMount() {
         this.props.requested();
@@ -25,23 +26,16 @@ class Gazp extends React.Component {
     }
 
     render() {
-        const {shareArr, loading} = this.props;
+        const {shareArr} = this.props;
 
-        if (loading || !shareArr) {
-            return <Spinner/>;
-        } else {
-            const shareMarketData = shareArr[0];
-            const shareSecurities = shareArr[1];
-
-            return (
-                <header className="App-header">
-                    {shareSecurities.secid} {shareSecurities.shortname}
-                    <br/>
-                    {shareMarketData.longTitle("last")} {shareMarketData.last}
-                </header>
-            );
-        }
+        return (
+            <>
+                <ShareTitle shareArr={shareArr}/>
+                <Chart/>
+            </>
+        );
     }
+
 }
 
 const mapStateToProps = (state) => {
@@ -56,4 +50,4 @@ const mapDispatchToProps = {
     requested,
 };
 
-export default WithExchangeService()(connect(mapStateToProps, mapDispatchToProps)(Gazp));
+export default WithExchangeService()(connect(mapStateToProps, mapDispatchToProps)(ShareDetails));

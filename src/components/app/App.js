@@ -1,7 +1,6 @@
 import './App.css';
 import React from "react";
-import Gazp from "../work-space/gazp/gazp";
-import MyChart from "../work-space/gazp/charts/chart";
+import ShareDetails from "../shareDetails/shareDetails";
 
 
 const App = () => {
@@ -9,8 +8,7 @@ const App = () => {
         <div className="App">
             <header className="App-header">
                 Hello world!
-                <Gazp/>
-                <MyChart/>
+                <ShareDetails/>
             </header>
         </div>
     );
