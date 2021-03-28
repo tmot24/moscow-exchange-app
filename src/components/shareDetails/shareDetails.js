@@ -5,7 +5,8 @@ import {connect} from "react-redux";
 import {shareLoaded, requested} from "../../actions/actions";
 import {ShareMarketData, ShareSecurities} from "../classes/currentOfShare";
 import ShareTitle from "./shareTitle/shareTitle";
-import Chart from "./chartShare/chart";
+import Chart from "./shareChart/chart";
+import ShareTable from "./shareTable/shareTable";
 
 class ShareDetails extends React.Component {
 
@@ -32,6 +33,7 @@ class ShareDetails extends React.Component {
             <>
                 <ShareTitle shareArr={shareArr}/>
                 <Chart/>
+                <ShareTable shareArr={shareArr}/>
             </>
         );
     }
