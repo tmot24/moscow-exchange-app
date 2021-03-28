@@ -24,8 +24,6 @@ class Chart extends React.Component {
             })
             // Запись в store
             .then(result => this.props.chartLoaded(result));
-
-
     }
 
     render() {
