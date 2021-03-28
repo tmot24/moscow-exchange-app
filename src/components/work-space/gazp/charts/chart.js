@@ -35,16 +35,13 @@ class Chart extends React.Component {
             return <Spinner/>;
         }
 
-        const yData = chart[1];
-        const labels = yData.map(value => value[0]);
-        const closePrices = yData.map(value => value[1]);
-        const coordinates = closePrices.map((value, index) => {
-            return  {x: index, y: value}
+        const coordinates = chart[1].map(value => {
+            return  {x: (new Date(value[0])).getTime(), y: value[1]}
         });
 
         return (
             <header className="App-header">
-                <MyChart coordinates={coordinates} labels={labels}/>
+                <MyChart coordinates={coordinates}/>
             </header>
         );
     }
