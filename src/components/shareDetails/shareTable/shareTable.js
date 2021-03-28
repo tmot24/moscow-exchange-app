@@ -6,37 +6,25 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import Spinner from "../../spinner/spinner";
 
 export default class ShareTable extends React.Component {
 
     render() {
-        const {shareArr} = this.props;
-
-        if (!shareArr) {
-            return <Spinner/>
-
-        }
-        const shareMarketData = shareArr[0];
-
-        const shareSecurities = shareArr[1];
-
-        console.log(shareSecurities)
+        const {shareArr, title} = this.props;
 
         let newRows = [];
-        for (let key in shareSecurities) {
-            const name = shareSecurities.longTitle(key);
-            const value = shareSecurities[key];
+        for (let key in shareArr) {
+            const name = shareArr.longTitle(key);
+            const value = shareArr[key];
             const obj = {name, value};
             newRows.push(obj);
         }
-
         return (
             <TableContainer component={Paper}>
                 <Table size="small" aria-label="a dense table">
                     <TableHead>
                         <TableRow>
-                            <TableCell align="left" style={{fontWeight: "bold", fontSize: "medium"}}>Securities</TableCell>
+                            <TableCell align="left" style={{fontWeight: "bold", fontSize: "medium"}}>{title}</TableCell>
                             <TableCell align="right" style={{fontWeight: "bold", fontSize: "medium"}}>Value</TableCell>
                         </TableRow>
                     </TableHead>

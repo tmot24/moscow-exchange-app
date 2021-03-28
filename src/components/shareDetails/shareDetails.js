@@ -7,6 +7,7 @@ import {ShareMarketData, ShareSecurities} from "../classes/currentOfShare";
 import ShareTitle from "./shareTitle/shareTitle";
 import Chart from "./shareChart/chart";
 import ShareTable from "./shareTable/shareTable";
+import Spinner from "../spinner/spinner";
 
 class ShareDetails extends React.Component {
 
@@ -29,11 +30,20 @@ class ShareDetails extends React.Component {
     render() {
         const {shareArr} = this.props;
 
+        if (!shareArr) {
+            return <Spinner/>
+        }
+
+        const shareMarketData = shareArr[0];
+
+        const shareSecurities = shareArr[1];
+
         return (
             <>
                 <ShareTitle shareArr={shareArr}/>
                 <Chart/>
-                <ShareTable shareArr={shareArr}/>
+                <ShareTable shareArr={shareSecurities} title={"Securities"}/>
+                <ShareTable shareArr={shareMarketData} title={"MarketData"}/>
             </>
         );
     }
