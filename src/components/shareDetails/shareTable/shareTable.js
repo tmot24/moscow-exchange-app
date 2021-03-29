@@ -25,7 +25,7 @@ export default class ShareTable extends React.Component {
                     <TableHead>
                         <TableRow>
                             <TableCell align="left" style={{fontWeight: "bold", fontSize: "medium"}}>{title}</TableCell>
-                            <TableCell align="right" style={{fontWeight: "bold", fontSize: "medium"}}>Value</TableCell>
+                            <TableCell align="right" style={{fontWeight: "bold", fontSize: "medium"}}/>
                         </TableRow>
                     </TableHead>
                     <TableBody>

@@ -48,7 +48,7 @@ class ShareDetails extends React.Component {
                         <Chart/>
                     </Grid>
                     <Grid item xs={12}>
-                        <ShareTable shareArr={shareSecurities} title={"Security info"}/>
+                        <ShareTable shareArr={shareSecurities} title={"Дополнительная информация"}/>
                     </Grid>
                 </Grid>
             </Container>

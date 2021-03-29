@@ -17,12 +17,18 @@ export default class ShareTitle extends React.Component {
         return (
             <header className="App-header">
                 <Grid container spacing={3}>
-                    <Grid item xs={6} container direction="row" justify="flex-start" alignItems="center" style={{textAlign: "left"}}>
+                    <Grid item xs={4} container direction="row" justify="flex-start" alignItems="center" style={{textAlign: "left"}}>
                         {shareSecurities.secname} {shareSecurities.secid}
                         <br/>
                         {shareMarketData.longTitle("last")} {shareMarketData.last}
                     </Grid>
-                    <Grid item xs={6} container direction="row" justify="flex-end" alignItems="center" style={{textAlign: "right"}}>
+                    <Grid item xs={4} container direction="row" justify="center" alignItems="center" style={{textAlign: "center"}}>
+                        Купить
+                        <br/>
+                        Продать
+                        <br/>
+                    </Grid>
+                    <Grid item xs={4} container direction="row" justify="flex-end" alignItems="center" style={{textAlign: "right"}}>
                         {shareMarketData.shortTitle("numtrades")}: {shareMarketData.numtrades}
                         <br/>
                         {shareMarketData.shortTitle("voltoday")}: {shareMarketData.voltoday}
