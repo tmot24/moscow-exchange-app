@@ -1,4 +1,5 @@
 import "../app/App.css";
+import Grid from '@material-ui/core/Grid';
 import React from "react";
 import WithExchangeService from "../hoc/with-exchange-service";
 import {connect} from "react-redux";
@@ -8,6 +9,7 @@ import ShareTitle from "./shareTitle/shareTitle";
 import Chart from "./shareChart/chart";
 import ShareTable from "./shareTable/shareTable";
 import Spinner from "../spinner/spinner";
+import {Container} from "@material-ui/core";
 
 class ShareDetails extends React.Component {
 
@@ -31,23 +33,27 @@ class ShareDetails extends React.Component {
         const {shareArr} = this.props;
 
         if (!shareArr) {
-            return <Spinner/>
+            return <Spinner/>;
         }
-
-        const shareMarketData = shareArr[0];
 
         const shareSecurities = shareArr[1];
 
         return (
-            <>
-                <ShareTitle shareArr={shareArr}/>
-                <Chart/>
-                <ShareTable shareArr={shareSecurities} title={"Securities"}/>
-                <ShareTable shareArr={shareMarketData} title={"MarketData"}/>
-            </>
+            <Container>
+                <Grid container style={{padding: 10}}>
+                    <Grid item xs={12}>
+                        <ShareTitle shareArr={shareArr}/>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Chart/>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <ShareTable shareArr={shareSecurities} title={"Security info"}/>
+                    </Grid>
+                </Grid>
+            </Container>
         );
     }
-
 }
 
 const mapStateToProps = (state) => {

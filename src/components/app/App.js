@@ -7,7 +7,6 @@ const App = () => {
     return (
         <div className="App">
             <header className="App-header">
-                Hello world!
                 <ShareDetails/>
             </header>
         </div>

@@ -38,9 +38,7 @@ class Chart extends React.Component {
         });
 
         return (
-            <header className="App-header">
                 <MyChart coordinates={coordinates}/>
-            </header>
         );
     }
 }

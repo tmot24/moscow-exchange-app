@@ -1,9 +1,9 @@
 import React from "react";
 import {
-    XYPlot,
     LineSeries,
     XAxis,
     YAxis,
+    FlexibleWidthXYPlot,
 } from 'react-vis';
 import "react-vis/dist/style.css";
 
@@ -13,7 +13,7 @@ export default class MyChart extends React.Component {
         const {coordinates} = this.props;
 
         return (
-            <XYPlot width={1200} height={500}>
+            <FlexibleWidthXYPlot height={300}>
                 <XAxis
                     tickFormat={function tickFormat(labels) {
                         return new Date(labels).toLocaleDateString();
@@ -24,7 +24,7 @@ export default class MyChart extends React.Component {
                 <LineSeries
                     data={coordinates}
                 />
-            </XYPlot>
+            </FlexibleWidthXYPlot>
         );
     }
 }
