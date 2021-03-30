@@ -14,8 +14,8 @@ class Chart extends React.Component {
     componentDidMount() {
         this.props.requested();
         // Получение объекта из API
-        const {ExchangeService} = this.props;
-        ExchangeService.getHistoryGAZP()
+        const {ExchangeService, itemId} = this.props;
+        ExchangeService.getHistoryGAZP(itemId)
             .then(obj => obj.history)
             .then(data => {
                 const dataTitle = data.columns[9];

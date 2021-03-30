@@ -20,21 +20,21 @@ export default class ShareTable extends React.Component {
             newRows.push(obj);
         }
         return (
-            <TableContainer component={Paper}>
+            <TableContainer component={Paper} style={{marginTop: 30}}>
                 <Table size="small" aria-label="a dense table">
                     <TableHead>
                         <TableRow>
-                            <TableCell align="left" style={{fontWeight: "bold", fontSize: "medium"}}>{title}</TableCell>
-                            <TableCell align="right" style={{fontWeight: "bold", fontSize: "medium"}}/>
+                            <TableCell size={"medium"} align="left" style={{fontWeight: "bold", fontSize: 20}}>{title}</TableCell>
+                            <TableCell size={"medium"} align="right" style={{fontWeight: "bold", fontSize: 20}}/>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {newRows.map((row) => (
                             <TableRow key={row.name}>
-                                <TableCell component="th" scope="row">
+                                <TableCell component="th" scope="row" style={{fontSize: 18}}>
                                     {row.name}
                                 </TableCell>
-                                <TableCell align="right">{row.value}</TableCell>
+                                <TableCell align="right" style={{fontSize: 18}}>{row.value}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

@@ -13,18 +13,20 @@ export default class MyChart extends React.Component {
         const {coordinates} = this.props;
 
         return (
-            <FlexibleWidthXYPlot height={300}>
-                <XAxis
-                    tickFormat={function tickFormat(labels) {
-                        return new Date(labels).toLocaleDateString();
-                    }}
-                    style={{text: {fontSize: 14, fill: "white"}}}
-                />
-                <YAxis style={{text: {fontSize: 14, fill: "white"}}}/>
-                <LineSeries
-                    data={coordinates}
-                />
-            </FlexibleWidthXYPlot>
+            <div style={{marginTop: 30}}>
+                <FlexibleWidthXYPlot height={300}>
+                    <XAxis
+                        tickFormat={function tickFormat(labels) {
+                            return new Date(labels).toLocaleDateString();
+                        }}
+                        style={{text: {fontSize: 14, fill: "white"}}}
+                    />
+                    <YAxis style={{text: {fontSize: 14, fill: "white"}}}/>
+                    <LineSeries
+                        data={coordinates}
+                    />
+                </FlexibleWidthXYPlot>
+            </div>
         );
     }
 }

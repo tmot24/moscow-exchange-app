@@ -11,15 +11,23 @@ class Home extends React.Component {
         const arrayObj = Object.entries(menu).map(arr => arr[1]);
 
         return (
-            <Container>
-                <ul>
-                    {
-                        arrayObj.map(menuItem => {
-                            return <MenuItem key={menuItem.id} menuItem={menuItem}/>;
-                        })
-                    }
-                </ul>
-            </Container>
+            <>
+                <div className={"greeting"}>
+                    <div className={"greeting_box"}>
+                        <span>КУПИТЬ АКЦИИ</span>
+                        <p>ВЕДУЩИХ НЕФТЯНЫХ<br/>КОМПАНИЙ РОССИИ</p>
+                        <span>ЛЕГКО</span>
+                    </div>
+                </div>
+                    <ul>
+                        {
+                            arrayObj.map(menuItem => {
+                                return <MenuItem key={menuItem.id} menuItem={menuItem}/>;
+                            })
+                        }
+                    </ul>
+            </>
+
         );
     }
 

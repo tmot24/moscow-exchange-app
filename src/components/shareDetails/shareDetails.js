@@ -16,8 +16,8 @@ class ShareDetails extends React.Component {
     componentDidMount() {
         this.props.requested();
         // Получение объекта из API
-        const {ExchangeService} = this.props;
-        ExchangeService.getCurrentGAZP()
+        const {ExchangeService, itemId} = this.props;
+        ExchangeService.getCurrentGAZP(itemId)
             .then(obj => {
                 const shareMarketData = new ShareMarketData(...obj.marketdata.data[0]);
                 const shareSecurities = new ShareSecurities(...obj.securities.data[0]);
@@ -45,7 +45,7 @@ class ShareDetails extends React.Component {
                         <ShareTitle shareArr={shareArr}/>
                     </Grid>
                     <Grid item xs={12}>
-                        <Chart/>
+                        <Chart itemId={shareSecurities.secid}/>
                     </Grid>
                     <Grid item xs={12}>
                         <ShareTable shareArr={shareSecurities} title={"Дополнительная информация"}/>

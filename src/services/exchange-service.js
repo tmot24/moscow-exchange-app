@@ -9,11 +9,11 @@ export default class ExchangeService {
         return await result.json();
     };
 
-    getCurrentGAZP = async () => {
-        return await this.getResource("/iss/engines/stock/markets/shares/boards/TQBR/securities/GAZP")
+    getCurrentGAZP = async (url) => {
+        return await this.getResource(`/iss/engines/stock/markets/shares/boards/TQBR/securities/${url}`)
     };
 
-    getHistoryGAZP = async () => {
-        return await this.getResource("/iss/history/engines/stock/markets/shares/boards/TQBR/securities/GAZP.json?from=2021-01-01&till=2021-03-25")
+    getHistoryGAZP = async (url) => {
+        return await this.getResource(`/iss/history/engines/stock/markets/shares/boards/TQBR/securities/${url}.json?from=2021-01-01&till=2021-03-30`)
     }
 }

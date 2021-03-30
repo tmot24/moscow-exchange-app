@@ -15,12 +15,6 @@ const initialState = {
             amount: 0,
             url: "https://cdn.freelogovectors.net/wp-content/uploads/2012/03/rosneft_logo.jpg",
         },
-        sngs: {
-            name: "Сургутнефтегаз",
-            id: "SNGS",
-            amount: 0,
-            url: "https://cdn.freelogovectors.net/wp-content/uploads/2020/10/Surgutneftegas-logo-768x427.png",
-        },
         lkoh: {
             name: "ЛУКОЙЛ",
             id: "LKOH",

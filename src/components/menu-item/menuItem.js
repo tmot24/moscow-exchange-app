@@ -3,7 +3,7 @@ import './menuItem.css';
 // import {Link} from "react-router-dom";
 
 const MenuItem = ({menuItem, onAddToCart}) => {
-    const {name, id, amount, url} = menuItem;
+    const {name, id, url} = menuItem;
     console.log(name);
 
     return (
