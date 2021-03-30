@@ -17,3 +17,10 @@ export const requested = () => {
         type: "REQUESTED",
     };
 };
+
+export const addedToBasket = (id) => {
+    return {
+        type: "ITEM_ADD_TO_BASKET",
+        payload: id
+    };
+};

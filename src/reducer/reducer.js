@@ -4,7 +4,7 @@ const initialState = {
     loading: true,
     basket: [],
     menu: {
-        garp: {
+        gazp: {
             name: "Газпром",
             id: "GAZP",
             amount: 0,
@@ -57,6 +57,24 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: true,
+            };
+
+        case "ITEM_ADD_TO_BASKET":
+            const id = action.payload;
+            const reformatId = id.toLowerCase();
+            const item = state.menu[reformatId];
+            const newItem = {
+                name: item.name,
+                id: item.id,
+                amount: item.amount,
+                url: item.url,
+            };
+            return {
+                ...state,
+                basket: [
+                    ...state.basket,
+                    newItem
+                ]
             };
 
         default:

@@ -4,8 +4,6 @@ import './menuItem.css';
 
 const MenuItem = ({menuItem, onAddToCart}) => {
     const {name, id, url} = menuItem;
-    console.log(name);
-
     return (
         <li className="menu-item">
             {/*<Link to={`/${menu.id}`}>*/}
