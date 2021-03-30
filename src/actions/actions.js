@@ -24,3 +24,10 @@ export const addedToBasket = (id) => {
         payload: id
     };
 };
+
+export const deleteFromBasket = (id) => {
+    return {
+        type: "ITEM_REMOVE_FROM_BASKET",
+        payload: id
+    };
+};

@@ -2,9 +2,10 @@ import React from "react";
 import {connect} from "react-redux";
 import "./cartTable.css";
 import {Container} from "@material-ui/core";
+import {deleteFromBasket} from "../../../actions/actions";
 
 
-const CartTable = ({basket, onDelete}) => {
+const CartTable = ({basket, deleteFromBasket}) => {
 
     return (
         <Container>
@@ -19,7 +20,7 @@ const CartTable = ({basket, onDelete}) => {
                                     <img src={url} className={"cart-item-img"} alt={id}/>
                                     <div className={"cart-item-title"}>{name}</div>
                                     <div className={"cart-item-amount"}>{amount}</div>
-                                    <div onClick={() => onDelete(id)} className={"cart-close"}>&times;</div>
+                                    <div onClick={() => deleteFromBasket(id)} className={"cart-close"}>&times;</div>
                                 </div>
                             );
                         })
@@ -35,12 +36,8 @@ const mapStateToProps = ({basket}) => {
         basket
     };
 };
-const mapDispatchToProps = () => {
-    return {
-        onDelete: (id) => {
-            console.log(`Удалили ${id}`);
-        }
-    };
+const mapDispatchToProps = {
+    deleteFromBasket,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartTable);
