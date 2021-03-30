@@ -2,6 +2,7 @@ const initialState = {
     shareArr: null,
     chart: null,
     loading: true,
+    basket: [],
     menu: {
         garp: {
             name: "Газпром",
@@ -33,7 +34,7 @@ const initialState = {
             amount: 0,
             url: "https://rogtecmagazine.com/wp-content/uploads/2019/04/8a10a247a6c0790ce3c53d79cfacb8dc.png",
         },
-    }
+    },
 };
 
 const reducer = (state = initialState, action) => {

@@ -1,4 +1,4 @@
-.menu__item {
+.menu-item {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,19 +14,19 @@
     margin-bottom: 40px;
 }
 
-.menu__title {
+.menu-title {
     font-size: 30px;
     font-weight: bold;
     margin-bottom: 20px;
 }
 
-.menu__img {
+.menu-img {
     width: calc(100%);
     object-fit: cover;
     margin-bottom: 20px;
 }
 
-.menu__btn {
+.menu-btn {
     width: 150px;
     height: 40px;
     border: none;

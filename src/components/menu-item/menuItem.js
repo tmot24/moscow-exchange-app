@@ -7,15 +7,15 @@ const MenuItem = ({menuItem, onAddToCart}) => {
     console.log(name);
 
     return (
-        <li className="menu__item">
-            {/*<Link to={`/${menuItem.id}`}>*/}
-            <div className="menu__title">{name}</div>
-            <img className="menu__img"
+        <li className="menu-item">
+            {/*<Link to={`/${menu.id}`}>*/}
+            <div className="menu-title">{name}</div>
+            <img className="menu-img"
                  src={url}
                  alt={name}/>
             <button
                 onClick={() => onAddToCart(id)}
-                className="menu__btn"
+                className="menu-btn"
             >Подробнее
             </button>
             {/*</Link>*/}
