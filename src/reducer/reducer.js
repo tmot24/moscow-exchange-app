@@ -61,21 +61,34 @@ const reducer = (state = initialState, action) => {
 
         case "ITEM_ADD_TO_BASKET":
             const id = action.payload;
-            const reformatId = id.toLowerCase();
-            const item = state.menu[reformatId];
-            const newItem = {
-                name: item.name,
-                id: item.id,
-                amount: item.amount,
-                url: item.url,
-            };
-            return {
-                ...state,
-                basket: [
-                    ...state.basket,
-                    newItem
-                ]
-            };
+            const reformatId = id.toUpperCase();
+            const item = state.menu[id];
+            const alreadyAdded = state.basket.findIndex(item => item.id === reformatId);
+            if (alreadyAdded === -1) {
+                const newItem = {
+                    name: item.name,
+                    id: item.id,
+                    amount: item.amount + 1,
+                    url: item.url,
+                };
+                return {
+                    ...state,
+                    basket: [
+                        ...state.basket,
+                        newItem
+                    ]
+                };
+            } else {
+                return {
+                    ...state,
+                    basket: [
+                        ...state.basket.slice(0, alreadyAdded),
+                        {...state.basket[alreadyAdded], amount: state.basket[alreadyAdded].amount + 1},
+                        ...state.basket.slice(alreadyAdded + 1)
+                    ]
+                };
+            }
+
 
         case "ITEM_REMOVE_FROM_BASKET":
             const removeId = action.payload;

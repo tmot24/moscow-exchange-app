@@ -33,7 +33,7 @@
 .cart-item-img {
     height: 125px;
     width: 250px;
-    object-fit: cover;
+    object-fit: scale-down;
 }
 .cart-close {
     position: absolute;
