@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import "./cartTable.css";
 import {Container} from "@material-ui/core";
 import {deleteFromBasket} from "../../../actions/actions";
+import {Link} from "react-router-dom";
 
 
 const CartTable = ({basket, deleteFromBasket}) => {
@@ -16,12 +17,12 @@ const CartTable = ({basket, deleteFromBasket}) => {
                         basket.map(item => {
                             const {name, id, amount, url} = item;
                             return (
-                                <div key={id} className={"cart-item"}>
+                                <Link to={`details/${id}`}  key={id} className={"cart-item"}>
                                     <img src={url} className={"cart-item-img"} alt={id}/>
                                     <div className={"cart-item-title"}>{name}</div>
                                     <div className={"cart-item-amount"}>{amount}</div>
                                     <div onClick={() => deleteFromBasket(id)} className={"cart-close"}>&times;</div>
-                                </div>
+                                </Link>
                             );
                         })
                     }

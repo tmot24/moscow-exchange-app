@@ -23,6 +23,7 @@
     border: 1px solid rgba(256, 256, 256, .2);
     background-color: rgba(255, 255, 255, 1);
     box-shadow: 0 0 20px rgba(256, 256, 256, .1);
+    text-decoration: none;
 }
 .cart-item-title, .cart-item-amount {
     width: 250px;
