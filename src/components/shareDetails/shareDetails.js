@@ -30,6 +30,7 @@ class ShareDetails extends React.Component {
     }
 
     render() {
+        window.scrollTo(0, 0)
         const {shareArr} = this.props;
 
         if (!shareArr) {
