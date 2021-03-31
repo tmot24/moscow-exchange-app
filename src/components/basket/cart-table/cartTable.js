@@ -17,12 +17,12 @@ const CartTable = ({basket, deleteFromBasket}) => {
                         basket.map(item => {
                             const {name, id, amount, url} = item;
                             return (
-                                <Link to={`details/${id}`}  key={id} className={"cart-item"}>
+                                <div key={id} className={"cart-item"}>
                                     <img src={url} className={"cart-item-img"} alt={id}/>
-                                    <div className={"cart-item-title"}>{name}</div>
+                                    <Link to={`details/${id}`} className={"cart-item-title"}>{name}</Link>
                                     <div className={"cart-item-amount"}>{amount}</div>
                                     <div onClick={() => deleteFromBasket(id)} className={"cart-close"}>&times;</div>
-                                </Link>
+                                </div>
                             );
                         })
                     }
