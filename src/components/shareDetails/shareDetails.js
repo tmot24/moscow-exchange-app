@@ -17,7 +17,7 @@ class ShareDetails extends React.Component {
         this.props.requested();
         // Получение объекта из API
         const {ExchangeService, itemId} = this.props;
-        ExchangeService.getCurrentGAZP(itemId)
+        ExchangeService.getCurrentShare(itemId)
             .then(obj => {
                 const shareMarketData = new ShareMarketData(...obj.marketdata.data[0]);
                 const shareSecurities = new ShareSecurities(...obj.securities.data[0]);

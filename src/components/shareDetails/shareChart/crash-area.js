@@ -14,7 +14,7 @@ export default class MyChart extends React.Component {
 
         return (
             <div style={{marginTop: 30}}>
-                <FlexibleWidthXYPlot height={300}>
+                <FlexibleWidthXYPlot height={300} margin = {{ left : 50 }} >
                     <XAxis
                         tickFormat={function tickFormat(labels) {
                             return new Date(labels).toLocaleDateString();
