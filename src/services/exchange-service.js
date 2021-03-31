@@ -29,11 +29,11 @@ export default class ExchangeService {
                 const formatTwoWeek = format(twoWeek, "yyyy-MM-dd");
                 return await this.getResource(`/iss/history/engines/stock/markets/shares/boards/TQBR/securities/${url}.json?from=${formatTwoWeek}&${now}`);
             case "oneMonth":
-                const oneMonth = subMonths(new Date(), 3);
+                const oneMonth = subMonths(new Date(), 1);
                 const formatOneMonth = format(oneMonth, "yyyy-MM-dd");
                 return await this.getResource(`/iss/history/engines/stock/markets/shares/boards/TQBR/securities/${url}.json?from=${formatOneMonth}&${now}`);
             case "twoMonth":
-                const twoMonth = subMonths(new Date(), 4);
+                const twoMonth = subMonths(new Date(), 2);
                 const formatTwoMonth = format(twoMonth, "yyyy-MM-dd");
                 return await this.getResource(`/iss/history/engines/stock/markets/shares/boards/TQBR/securities/${url}.json?from=${formatTwoMonth}&${now}`);
             default:

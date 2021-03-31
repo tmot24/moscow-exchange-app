@@ -15,10 +15,10 @@ import Button from '@material-ui/core/Button';
 
 class ShareDetails extends React.Component {
     state = {
-        period: "year",
+        period: "fourMonth",
     };
 
-    componentDidMount() {
+    currentShare () {
         this.props.requested();
         // Получение объекта из API
         const {ExchangeService, itemId} = this.props;
@@ -32,8 +32,11 @@ class ShareDetails extends React.Component {
             .then(result => {
                 this.props.shareLoaded(result);
             });
+    }
+    currentOfHistory () {
+        const {ExchangeService, itemId} = this.props;
         // Получение объекта из API
-        ExchangeService.getHistoryShare(itemId)
+        ExchangeService.getHistoryShare(itemId, this.state.period)
             .then(obj => obj.history)
             .then(data => {
                 const dataTitle = data.columns[9];
@@ -42,6 +45,18 @@ class ShareDetails extends React.Component {
             })
             // Запись в store
             .then(result => this.props.chartLoaded(result));
+    }
+
+    componentDidMount() {
+        this.currentShare();
+        this.currentOfHistory();
+
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.state.period !== prevState.period) {
+            this.currentOfHistory();
+        }
     }
 
     updatePeriod(period) {
