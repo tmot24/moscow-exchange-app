@@ -3,13 +3,13 @@ import Grid from '@material-ui/core/Grid';
 import React from "react";
 import WithExchangeService from "../hoc/with-exchange-service";
 import {connect} from "react-redux";
-import {shareLoaded, requested} from "../../actions/actions";
+import {shareLoaded, requested, chartLoaded} from "../../actions/actions";
 import {ShareMarketData, ShareSecurities} from "../classes/currentOfShare";
 import ShareTitle from "./shareTitle/shareTitle";
-import Chart from "./shareChart/chart";
 import ShareTable from "./shareTable/shareTable";
 import Spinner from "../spinner/spinner";
 import {Container} from "@material-ui/core";
+import MyChart from "./shareChart/myChart";
 
 class ShareDetails extends React.Component {
 
@@ -27,17 +27,30 @@ class ShareDetails extends React.Component {
             .then(result => {
                 this.props.shareLoaded(result);
             });
+        // Получение объекта из API
+        ExchangeService.getHistoryShare(itemId)
+            .then(obj => obj.history)
+            .then(data => {
+                const dataTitle = data.columns[9];
+                const closePrice = data.data.map(arr => [arr[1], arr[9]]);
+                return [dataTitle, closePrice];
+            })
+            // Запись в store
+            .then(result => this.props.chartLoaded(result));
     }
 
     render() {
         window.scrollTo(0, 0)
-        const {shareArr} = this.props;
+        const {shareArr, chart} = this.props;
 
-        if (!shareArr) {
+        if (!shareArr || !chart) {
             return <Spinner/>;
         }
 
         const shareSecurities = shareArr[1];
+        const coordinates = chart[1].map(value => {
+            return  {x: (new Date(value[0])).getTime(), y: value[1]}
+        });
 
         return (
             <Container>
@@ -46,7 +59,7 @@ class ShareDetails extends React.Component {
                         <ShareTitle shareArr={shareArr}/>
                     </Grid>
                     <Grid item xs={12}>
-                        <Chart itemId={shareSecurities.secid}/>
+                        <MyChart coordinates={coordinates}/>
                     </Grid>
                     <Grid item xs={12}>
                         <ShareTable shareArr={shareSecurities} title={"Дополнительная информация"}/>
@@ -60,11 +73,13 @@ class ShareDetails extends React.Component {
 const mapStateToProps = (state) => {
     return {
         shareArr: state.shareArr,
+        chart: state.chart,
         loading: state.loading,
     };
 };
 
 const mapDispatchToProps = {
+    chartLoaded,
     shareLoaded,
     requested,
 };
