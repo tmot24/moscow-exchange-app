@@ -14,12 +14,13 @@ export default class MyChart extends React.Component {
 
         return (
             <div style={{marginTop: 30}}>
-                <FlexibleWidthXYPlot height={300} margin = {{ left : 50 }} >
+                <FlexibleWidthXYPlot height={300} margin = {{ left : 50, right: 50 }} >
                     <XAxis
                         tickFormat={function tickFormat(labels) {
                             return new Date(labels).toLocaleDateString();
                         }}
                         style={{text: {fontSize: 14, fill: "white"}}}
+                        tickTotal={10}
                     />
                     <YAxis style={{text: {fontSize: 14, fill: "white"}}}/>
                     <LineSeries

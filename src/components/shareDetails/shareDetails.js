@@ -1,4 +1,5 @@
 import "../app/App.css";
+import "./shareDetails.css";
 import Grid from '@material-ui/core/Grid';
 import React from "react";
 import WithExchangeService from "../hoc/with-exchange-service";
@@ -10,8 +11,12 @@ import ShareTable from "./shareTable/shareTable";
 import Spinner from "../spinner/spinner";
 import {Container} from "@material-ui/core";
 import MyChart from "./shareChart/myChart";
+import Button from '@material-ui/core/Button';
 
 class ShareDetails extends React.Component {
+    state = {
+        period: "year",
+    };
 
     componentDidMount() {
         this.props.requested();
@@ -39,8 +44,12 @@ class ShareDetails extends React.Component {
             .then(result => this.props.chartLoaded(result));
     }
 
+    updatePeriod(period) {
+        this.setState({period});
+    }
+
     render() {
-        window.scrollTo(0, 0)
+        window.scrollTo(0, 0);
         const {shareArr, chart} = this.props;
 
         if (!shareArr || !chart) {
@@ -49,7 +58,7 @@ class ShareDetails extends React.Component {
 
         const shareSecurities = shareArr[1];
         const coordinates = chart[1].map(value => {
-            return  {x: (new Date(value[0])).getTime(), y: value[1]}
+            return {x: (new Date(value[0])).getTime(), y: value[1]};
         });
 
         return (
@@ -60,6 +69,18 @@ class ShareDetails extends React.Component {
                     </Grid>
                     <Grid item xs={12}>
                         <MyChart coordinates={coordinates}/>
+                        <div className={"buttons"}>
+                            <Button style={{flexBasis: 120}} variant="contained"
+                                    onClick={() => this.updatePeriod("oneWeek")}>1 неделя</Button>
+                            <Button style={{flexBasis: 120}} variant="contained"
+                                    onClick={() => this.updatePeriod("twoWeek")}>2 недели</Button>
+                            <Button style={{flexBasis: 120}} variant="contained"
+                                    onClick={() => this.updatePeriod("oneMonth")}>1 месяц</Button>
+                            <Button style={{flexBasis: 120}} variant="contained"
+                                    onClick={() => this.updatePeriod("twoMonth")}>2 месяца</Button>
+                            <Button style={{flexBasis: 120}} variant="contained"
+                                    onClick={() => this.updatePeriod("fourMonth")}>4 месяца</Button>
+                        </div>
                     </Grid>
                     <Grid item xs={12}>
                         <ShareTable shareArr={shareSecurities} title={"Дополнительная информация"}/>
