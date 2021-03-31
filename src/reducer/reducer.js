@@ -80,7 +80,6 @@ const reducer = (state = initialState, action) => {
         case "ITEM_REMOVE_FROM_BASKET":
             const removeId = action.payload;
             const removeIndex = state.basket.findIndex(item => item.id === removeId);
-            console.log(removeIndex)
             return {
                 ...state,
                 basket: [

@@ -1,6 +1,6 @@
 import React from 'react';
 import './menuItem.css';
-// import {Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 const MenuItem = ({menuItem, onAddToCart}) => {
     const {name, id, url} = menuItem;
@@ -11,11 +11,10 @@ const MenuItem = ({menuItem, onAddToCart}) => {
             <img className="menu-img"
                  src={url}
                  alt={name}/>
-            <button
-                onClick={() => onAddToCart(id)}
+            <Link
                 className="menu-btn"
             >Подробнее
-            </button>
+            </Link>
             {/*</Link>*/}
         </li>
     );

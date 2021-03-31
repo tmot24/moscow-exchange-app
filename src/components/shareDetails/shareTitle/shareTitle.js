@@ -1,11 +1,15 @@
 import React from "react";
 import Spinner from "../../spinner/spinner";
 import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import {addedToBasket} from "../../../actions/actions";
+import {connect} from "react-redux";
 
-export default class ShareTitle extends React.Component {
+class ShareTitle extends React.Component {
 
     render() {
-        const {shareArr} = this.props;
+        const {shareArr, addedToBasket} = this.props;
 
         if (!shareArr) {
             return <Spinner/>;
@@ -23,10 +27,11 @@ export default class ShareTitle extends React.Component {
                         {shareMarketData.longTitle("last")} {shareMarketData.last}
                     </Grid>
                     <Grid item xs={4} container direction="row" justify="center" alignItems="center" style={{textAlign: "center", fontSize: 24}}>
-                        Купить
-                        <br/>
-                        Продать
-                        <br/>
+                        <Button size={"large"} variant="contained" style={{backgroundColor: "#8bc34a"}}
+                            onClick={() => addedToBasket(shareSecurities.secid.toLowerCase())}
+                        >
+                            Купить
+                        </Button>
                     </Grid>
                     <Grid item xs={4} container direction="row" justify="flex-end" alignItems="center" style={{textAlign: "right", fontSize: 24}}>
                         {shareMarketData.shortTitle("numtrades")}: {shareMarketData.numtrades}
@@ -38,5 +43,14 @@ export default class ShareTitle extends React.Component {
             </header>
         );
     }
-
 }
+const mapStateToProps = (state) => {
+    return {
+        menu: state.menu,
+    };
+};
+const mapDispatchToProps = {
+    addedToBasket
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShareTitle);
