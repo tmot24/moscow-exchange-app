@@ -34,6 +34,7 @@ class ShareDetails extends React.Component {
             });
     }
     currentOfHistory () {
+        this.props.requested();
         const {ExchangeService, itemId} = this.props;
         // Получение объекта из API
         ExchangeService.getHistoryShare(itemId, this.state.period)

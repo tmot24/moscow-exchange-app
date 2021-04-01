@@ -1,8 +1,8 @@
-import {subWeeks, subMonths, subYears, format} from 'date-fns';
+import {subWeeks, subMonths, format} from 'date-fns';
 
 
 export default class ExchangeService {
-    _apiBase = "http://iss.moex.com";
+    _apiBase = "https://iss.moex.com";
 
     getResource = async (url) => {
         const result = await fetch(`${this._apiBase}${url}.json`);
