@@ -1,7 +1,6 @@
 import React from "react";
 import Spinner from "../../spinner/spinner";
 import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import {addedToBasket} from "../../../actions/actions";
 import {connect} from "react-redux";

@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import MenuItem from "../menu-item/menuItem";
 import "./home.css";
-import {addedToBasket} from "../../actions/actions";
+import Box from '@material-ui/core/Box';
 
 class Home extends React.Component {
 
@@ -13,11 +13,11 @@ class Home extends React.Component {
         return (
             <>
                 <div className={"greeting"}>
-                    <div className={"greeting_box"}>
+                    <Box className={"greeting_box"}>
                         <span>КУПИТЬ АКЦИИ</span>
                         <p>ВЕДУЩИХ НЕФТЯНЫХ<br/>КОМПАНИЙ РОССИИ</p>
                         <span>ЛЕГКО</span>
-                    </div>
+                    </Box>
                 </div>
                     <ul>
                         {

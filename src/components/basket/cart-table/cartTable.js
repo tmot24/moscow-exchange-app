@@ -4,7 +4,8 @@ import "./cartTable.css";
 import {Container} from "@material-ui/core";
 import {deleteFromBasket} from "../../../actions/actions";
 import {Link} from "react-router-dom";
-
+import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from '@material-ui/core/IconButton';
 
 const CartTable = ({basket, deleteFromBasket}) => {
 
@@ -21,7 +22,9 @@ const CartTable = ({basket, deleteFromBasket}) => {
                                     <img src={url} className={"cart-item-img"} alt={id}/>
                                     <Link to={`details/${id}`} className={"cart-item-title"}>{name}</Link>
                                     <div className={"cart-item-amount"}>{amount}</div>
-                                    <div onClick={() => deleteFromBasket(id)} className={"cart-close"}>&times;</div>
+                                    <IconButton onClick={() => deleteFromBasket(id)} aria-label="delete">
+                                        <DeleteIcon/>
+                                    </IconButton>
                                 </div>
                             );
                         })
