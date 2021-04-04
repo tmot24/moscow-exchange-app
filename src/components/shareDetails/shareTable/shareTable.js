@@ -20,7 +20,7 @@ export default class ShareTable extends React.Component {
             newRows.push(obj);
         }
         return (
-            <TableContainer component={Paper} style={{marginTop: 30}}>
+            <TableContainer component={Paper} style={{marginTop: 30}} elevation={9}>
                 <Table size="small" aria-label="a dense table">
                     <TableHead>
                         <TableRow>

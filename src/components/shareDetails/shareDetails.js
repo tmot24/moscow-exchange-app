@@ -9,7 +9,7 @@ import {ShareMarketData, ShareSecurities} from "../classes/currentOfShare";
 import {ShareTitle} from "./shareTitle/shareTitle";
 import ShareTable from "./shareTable/shareTable";
 import Spinner from "../spinner/spinner";
-import {Container} from "@material-ui/core";
+import {Container, Paper} from "@material-ui/core";
 import MyChart from "./shareChart/myChart";
 import Button from '@material-ui/core/Button';
 
@@ -64,22 +64,26 @@ export function ShareDetails({itemId}) {
         <Container>
             <Grid container style={{padding: 10}}>
                 <Grid item xs={12}>
-                    <ShareTitle shareArr={shareArr}/>
+                    <Paper elevation={9} style={{padding: 15, marginTop: 30}}>
+                        <ShareTitle shareArr={shareArr}/>
+                    </Paper>
                 </Grid>
                 <Grid item xs={12}>
-                    <MyChart coordinates={coordinates}/>
-                    <div className={"buttons"}>
-                        <Button style={{flexBasis: 120}} variant="contained"
-                                onClick={() => setPeriod("fourMonth")}>4 месяца</Button>
-                        <Button style={{flexBasis: 120}} variant="contained"
-                                onClick={() => setPeriod("twoMonth")}>2 месяца</Button>
-                        <Button style={{flexBasis: 120}} variant="contained"
-                                onClick={() => setPeriod("oneMonth")}>1 месяц</Button>
-                        <Button style={{flexBasis: 120}} variant="contained"
-                                onClick={() => setPeriod("twoWeek")}>2 недели</Button>
-                        <Button style={{flexBasis: 120}} variant="contained"
-                                onClick={() => setPeriod("oneWeek")}>1 неделя</Button>
-                    </div>
+                    <Paper elevation={9} style={{paddingTop: 10, paddingBottom: 15, marginTop: 30}}>
+                        <MyChart coordinates={coordinates}/>
+                        <div className={"buttons"}>
+                            <Button color="primary" style={{flexBasis: 120}} variant="outlined"
+                                    onClick={() => setPeriod("fourMonth")}>4 месяца</Button>
+                            <Button color="primary" style={{flexBasis: 120}} variant="outlined"
+                                    onClick={() => setPeriod("twoMonth")}>2 месяца</Button>
+                            <Button color="primary" style={{flexBasis: 120}} variant="outlined"
+                                    onClick={() => setPeriod("oneMonth")}>1 месяц</Button>
+                            <Button color="primary" style={{flexBasis: 120}} variant="outlined"
+                                    onClick={() => setPeriod("twoWeek")}>2 недели</Button>
+                            <Button color="primary" style={{flexBasis: 120}} variant="outlined"
+                                    onClick={() => setPeriod("oneWeek")}>1 неделя</Button>
+                        </div>
+                    </Paper>
                 </Grid>
                 <Grid item xs={12}>
                     <ShareTable shareArr={shareSecurities} title={"Дополнительная информация"}/>

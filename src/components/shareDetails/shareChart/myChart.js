@@ -1,4 +1,5 @@
 import React from "react";
+import {Paper} from '@material-ui/core';
 import {
     LineSeries,
     XAxis,
@@ -13,21 +14,21 @@ export default class MyChart extends React.Component {
         const {coordinates} = this.props;
 
         return (
-            <div style={{marginTop: 30}}>
-                <FlexibleWidthXYPlot height={300} margin = {{ left : 50, right: 50 }} >
-                    <XAxis
-                        tickFormat={function tickFormat(labels) {
-                            return new Date(labels).toLocaleDateString();
-                        }}
-                        style={{text: {fontSize: 14, fill: "white"}}}
-                        tickTotal={10}
-                    />
-                    <YAxis style={{text: {fontSize: 14, fill: "white"}}}/>
-                    <LineSeries
-                        data={coordinates}
-                    />
-                </FlexibleWidthXYPlot>
-            </div>
+                <div style={{marginTop: 30}}>
+                    <FlexibleWidthXYPlot height={300} margin={{left: 75, right: 50}}>
+                        <XAxis
+                            tickFormat={function tickFormat(labels) {
+                                return new Date(labels).toLocaleDateString();
+                            }}
+                            style={{text: {fontSize: 14}}}
+                            tickTotal={10}
+                        />
+                        <YAxis style={{text: {fontSize: 14}}}/>
+                        <LineSeries
+                            data={coordinates}
+                        />
+                    </FlexibleWidthXYPlot>
+                </div>
         );
     }
 }

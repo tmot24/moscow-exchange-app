@@ -1,41 +1,12 @@
-.menu-item {
+.main_class {
+    width: 500px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    width: 250px;
-    height: 375px;
-    min-height: 200px;
-    background-color: #fff;
-    box-shadow: 5px 5px 45px rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    padding: 20px;
-    margin: 20px;
-}
 
-.menu-title {
-    font-size: 30px;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
 
-.menu-img {
-    width: calc(100%);
-    object-fit: cover;
-    margin-bottom: 20px;
+    align-content: center;
 }
+.main_class .image {
+    height: 100%;
+    width: 300px;
 
-.menu-btn {
-    width: 150px;
-    height: 40px;
-    border: none;
-    background-color: #29a745;
-    border-radius: 4px;
-    color: #fff;
-    font-size: 18px;
-    cursor: pointer;
-    text-decoration: none;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
 }

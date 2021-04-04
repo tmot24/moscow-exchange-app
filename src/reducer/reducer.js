@@ -1,3 +1,9 @@
+import gazp from "../images/Gazprom-Logo-rus.svg"
+import rosn from "../images/Rosneft_Logo.svg"
+import lkoh from "../images/LUK_OIL_Logo_kyr.svg"
+import tatn from "../images/Tatneft-Logo.svg"
+import rnft from "../images/ruusneft.svg"
+
 const initialState = {
     shareArr: null,
     chart: null,
@@ -8,31 +14,31 @@ const initialState = {
             name: "Газпром",
             id: "GAZP",
             amount: 0,
-            url: "https://upload.wikimedia.org/wikipedia/ru/thumb/2/2d/Gazprom-Logo-rus.svg/1200px-Gazprom-Logo-rus.svg.png",
+            url: gazp,
         },
         rosn: {
             name: "Роснефть",
             id: "ROSN",
             amount: 0,
-            url: "https://cdn.freelogovectors.net/wp-content/uploads/2012/03/rosneft_logo.jpg",
+            url: rosn,
         },
         lkoh: {
             name: "ЛУКОЙЛ",
             id: "LKOH",
             amount: 0,
-            url: "https://cdn.freelogovectors.net/wp-content/uploads/2020/02/lukoil-logo-768x768.png",
+            url: lkoh,
         },
         tatn: {
             name: "Татнефть",
             id: "TATN",
             amount: 0,
-            url: "https://cdn.freelogovectors.net/wp-content/uploads/2020/01/tatneft-logo-768x768.png",
+            url: tatn,
         },
         rnft: {
             name: "РуссНефть",
             id: "RNFT",
             amount: 0,
-            url: "https://rogtecmagazine.com/wp-content/uploads/2019/04/8a10a247a6c0790ce3c53d79cfacb8dc.png",
+            url: rnft,
         },
     },
 };
