@@ -3,7 +3,7 @@ import cartIcon from './shopping-cart-solid.svg';
 import {Link} from "react-router-dom";
 import "./header.css";
 
-const AppHeader = () => {
+export function AppHeader () {
     return (
         <div className={"head"}>
             <div>
@@ -14,7 +14,4 @@ const AppHeader = () => {
             </Link>
         </div>
     );
-};
-
-
-export {AppHeader};
+}
