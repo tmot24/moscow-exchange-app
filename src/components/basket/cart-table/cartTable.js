@@ -1,13 +1,16 @@
 import React from "react";
-import {connect} from "react-redux";
+import {useDispatch} from "react-redux";
 import "./cartTable.css";
 import {Container} from "@material-ui/core";
-import {deleteFromBasket} from "../../../actions/actions";
 import {Link} from "react-router-dom";
 import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
+import {useSelector} from "react-redux";
+import {deleteFromBasket} from "../../../actions/actions";
 
-const CartTable = ({basket, deleteFromBasket}) => {
+export function CartTable() {
+    const basket = useSelector(state => state.basket)
+    const dispatch = useDispatch()
 
     return (
         <Container>
@@ -22,7 +25,7 @@ const CartTable = ({basket, deleteFromBasket}) => {
                                     <img src={url} className={"cart-item-img"} alt={id}/>
                                     <Link to={`details/${id}`} className={"cart-item-title"}>{name}</Link>
                                     <div className={"cart-item-amount"}>{amount}</div>
-                                    <IconButton onClick={() => deleteFromBasket(id)} aria-label="delete">
+                                    <IconButton onClick={() => dispatch(deleteFromBasket(id))} aria-label="delete">
                                         <DeleteIcon/>
                                     </IconButton>
                                 </div>
@@ -33,15 +36,4 @@ const CartTable = ({basket, deleteFromBasket}) => {
             </div>
         </Container>
     );
-};
-
-const mapStateToProps = ({basket}) => {
-    return {
-        basket
-    };
-};
-const mapDispatchToProps = {
-    deleteFromBasket,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(CartTable);
+}
