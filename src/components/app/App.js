@@ -4,7 +4,7 @@ import ShareDetails from "../shareDetails/shareDetails";
 import {Home} from "../home/home";
 import {AppHeader} from "../header/header";
 import {Route, Switch} from "react-router-dom";
-import Basket from "../basket/basket";
+import {Basket} from "../basket/basket";
 
 
 const App = () => {
