@@ -6,7 +6,7 @@ import {ExchangeServiceContext} from "../exchange-service-context/exchange-servi
 import {useDispatch, useSelector} from "react-redux";
 import {shareLoaded, requested, chartLoaded} from "../../actions/actions";
 import {ShareMarketData, ShareSecurities} from "../classes/currentOfShare";
-import ShareTitle from "./shareTitle/shareTitle";
+import {ShareTitle} from "./shareTitle/shareTitle";
 import ShareTable from "./shareTable/shareTable";
 import Spinner from "../spinner/spinner";
 import {Container} from "@material-ui/core";

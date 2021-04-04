@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {useDispatch} from "react-redux";
 import "./cartTable.css";
 import {Container} from "@material-ui/core";
@@ -11,6 +11,10 @@ import {deleteFromBasket} from "../../../actions/actions";
 export function CartTable() {
     const basket = useSelector(state => state.basket)
     const dispatch = useDispatch()
+
+    useEffect(() => {
+        localStorage.setItem("basket", JSON.stringify(basket))
+    }, [basket])
 
     return (
         <Container>
