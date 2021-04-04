@@ -10,8 +10,7 @@ import ExchangeService from "../../services/exchange-service";
 
 const exchangeService = new ExchangeService();
 
-
-const App = () => {
+export default function App () {
     return (
         <ExchangeServiceContext.Provider value={exchangeService}>
             <Route>
@@ -33,6 +32,4 @@ const App = () => {
             </Route>
         </ExchangeServiceContext.Provider>
     );
-};
-
-export default App;
+}
