@@ -18,7 +18,7 @@ export function ShareDetails({itemId}) {
     const shareArr = useSelector(state => state.shareArr);
     const chart = useSelector(state => state.chart);
     const dispatch = useDispatch();
-    const exchangeService = useContext(ExchangeServiceContext)
+    const exchangeService = useContext(ExchangeServiceContext);
 
     useEffect(() => {
         dispatch(requested());
@@ -33,7 +33,7 @@ export function ShareDetails({itemId}) {
             .then(result => {
                 dispatch(shareLoaded(result));
             });
-    }, [exchangeService, dispatch, itemId])
+    }, [exchangeService, dispatch, itemId]);
 
     useEffect(() => {
         dispatch(requested());
@@ -47,7 +47,7 @@ export function ShareDetails({itemId}) {
             })
             // Запись в store
             .then(result => dispatch(chartLoaded(result)));
-    }, [exchangeService, dispatch, itemId, period])
+    }, [exchangeService, dispatch, itemId, period]);
 
     window.scrollTo(0, 0);
 
@@ -78,7 +78,7 @@ export function ShareDetails({itemId}) {
                         <Button style={{flexBasis: 120}} variant="contained"
                                 onClick={() => setPeriod("twoWeek")}>2 недели</Button>
                         <Button style={{flexBasis: 120}} variant="contained"
-                            onClick={() => setPeriod("oneWeek")}>1 неделя</Button>
+                                onClick={() => setPeriod("oneWeek")}>1 неделя</Button>
                     </div>
                 </Grid>
                 <Grid item xs={12}>

@@ -2,7 +2,7 @@ const initialState = {
     shareArr: null,
     chart: null,
     loading: true,
-    basket: [],
+    basket: JSON.parse(localStorage.getItem("basket")),
     menu: {
         gazp: {
             name: "Газпром",
