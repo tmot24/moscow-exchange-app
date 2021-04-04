@@ -1,8 +1,8 @@
 import "../app/App.css";
 import "./shareDetails.css";
 import Grid from '@material-ui/core/Grid';
-import React, {useState, useEffect} from "react";
-import WithExchangeService from "../hoc/with-exchange-service";
+import React, {useState, useEffect, useContext} from "react";
+import {ExchangeServiceContext} from "../exchange-service-context/exchange-service-context";
 import {useDispatch, useSelector} from "react-redux";
 import {shareLoaded, requested, chartLoaded} from "../../actions/actions";
 import {ShareMarketData, ShareSecurities} from "../classes/currentOfShare";
@@ -13,17 +13,17 @@ import {Container} from "@material-ui/core";
 import MyChart from "./shareChart/myChart";
 import Button from '@material-ui/core/Button';
 
-function ShareDetails({ExchangeService, itemId}) {
+export function ShareDetails({itemId}) {
     const [period, setPeriod] = useState("fourMonth");
     const shareArr = useSelector(state => state.shareArr);
     const chart = useSelector(state => state.chart);
     const dispatch = useDispatch();
+    const exchangeService = useContext(ExchangeServiceContext)
 
     useEffect(() => {
-        console.log("currentShare")
         dispatch(requested());
         // Получение объекта из API
-        ExchangeService.getCurrentShare(itemId)
+        exchangeService.getCurrentShare(itemId)
             .then(obj => {
                 const shareMarketData = new ShareMarketData(...obj.marketdata.data[0]);
                 const shareSecurities = new ShareSecurities(...obj.securities.data[0]);
@@ -33,13 +33,12 @@ function ShareDetails({ExchangeService, itemId}) {
             .then(result => {
                 dispatch(shareLoaded(result));
             });
-    }, [ExchangeService, dispatch, itemId])
+    }, [exchangeService, dispatch, itemId])
 
     useEffect(() => {
-        console.log("currentOfHistory")
         dispatch(requested());
         // Получение объекта из API
-        ExchangeService.getHistoryShare(itemId, period)
+        exchangeService.getHistoryShare(itemId, period)
             .then(obj => obj.history)
             .then(data => {
                 const dataTitle = data.columns[9];
@@ -48,8 +47,7 @@ function ShareDetails({ExchangeService, itemId}) {
             })
             // Запись в store
             .then(result => dispatch(chartLoaded(result)));
-    }, [ExchangeService, dispatch, itemId, period])
-
+    }, [exchangeService, dispatch, itemId, period])
 
     window.scrollTo(0, 0);
 
@@ -90,5 +88,3 @@ function ShareDetails({ExchangeService, itemId}) {
         </Container>
     );
 }
-
-export default WithExchangeService()(ShareDetails);

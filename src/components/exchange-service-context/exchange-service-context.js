@@ -1,5 +1,4 @@
 import React from "react";
 
-const ExchangeServiceContext = React.createContext();
-
-export default ExchangeServiceContext;
+export const ExchangeServiceContext = React.createContext();
+export const BasketContext = React.createContext();
