@@ -1,11 +1,10 @@
 import React from "react";
 import {useSelector} from "react-redux";
-import MenuItem from "../menu-item/menuItem";
+import {MenuItem} from "../menu-item/menuItem";
 import "./home.css";
 import Box from '@material-ui/core/Box';
 
-export default function Home() {
-
+export function Home() {
     const menu = useSelector(state => state.menu);
     const arrayObj = Object.entries(menu).map(arr => arr[1]);
 

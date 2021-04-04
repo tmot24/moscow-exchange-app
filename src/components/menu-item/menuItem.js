@@ -2,7 +2,7 @@ import React from 'react';
 import './menuItem.css';
 import {Link} from "react-router-dom";
 
-export default function MenuItem({menuItem}) {
+export function MenuItem({menuItem}) {
     const {name, id, url} = menuItem;
     return (
         <li className="menu-item">
@@ -16,4 +16,4 @@ export default function MenuItem({menuItem}) {
             </Link>
         </li>
     );
-};
+}
