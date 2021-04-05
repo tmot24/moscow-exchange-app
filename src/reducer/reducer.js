@@ -107,6 +107,30 @@ const reducer = (state = initialState, action) => {
                 ]
             };
 
+        case "ITEM_ADD_IN_BASKET":
+            const addId = action.payload;
+            const addIndex = state.basket.findIndex(item => item.id === addId);
+            return {
+                ...state,
+                basket: [
+                    ...state.basket.slice(0, addIndex),
+                    {...state.basket[addIndex], amount: state.basket[addIndex].amount + 1},
+                    ...state.basket.slice(addIndex + 1)
+                ]
+            };
+
+        case "ITEM_REMOVE_IN_BASKET":
+            const removeIdFromBasket = action.payload;
+            const removeIndexFromBasket = state.basket.findIndex(item => item.id === removeIdFromBasket);
+            return {
+                ...state,
+                basket: [
+                    ...state.basket.slice(0, removeIndexFromBasket),
+                    {...state.basket[removeIndexFromBasket], amount: state.basket[removeIndexFromBasket].amount - 1},
+                    ...state.basket.slice(removeIndexFromBasket + 1)
+                ]
+            };
+
         default:
             return state;
     }

@@ -31,3 +31,17 @@ export const deleteFromBasket = (id) => {
         payload: id
     };
 };
+
+export const addItemInBasket = (id) => {
+    return {
+        type: "ITEM_ADD_IN_BASKET",
+        payload: id
+    };
+};
+
+export const removeItemInBasket = (id) => {
+    return {
+        type: "ITEM_REMOVE_IN_BASKET",
+        payload: id
+    };
+};

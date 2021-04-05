@@ -8,6 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import {useSelector} from "react-redux";
 import HomeIcon from '@material-ui/icons/Home';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
+import {Link} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -39,13 +40,17 @@ export function AppHeader() {
         <div className={classes.root}>
             <AppBar position="fixed">
                 <Toolbar className={classes.bar}>
-                    <IconButton className={classes.bgIcon} aria-label="cart" href={"/"}>
-                        <HomeIcon className={classes.icon}/>
+                    <IconButton className={classes.bgIcon} aria-label="cart">
+                        <Link to={"/"}>
+                            <HomeIcon className={classes.icon}/>
+                        </Link>
                     </IconButton>
-                    <IconButton className={classes.bgIcon} aria-label="cart" href={"/basket"}>
-                        <StyledBadge badgeContent={basket.length} color="secondary">
-                            <ShoppingBasketIcon className={classes.icon}/>
-                        </StyledBadge>
+                    <IconButton className={classes.bgIcon} aria-label="cart">
+                        <Link to={"/basket"}>
+                            <StyledBadge badgeContent={basket.length} color="secondary">
+                                <ShoppingBasketIcon className={classes.icon}/>
+                            </StyledBadge>
+                        </Link>
                     </IconButton>
                 </Toolbar>
             </AppBar>

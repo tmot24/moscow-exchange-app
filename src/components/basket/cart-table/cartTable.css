@@ -16,19 +16,25 @@
 .cart-item {
     position: relative;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     margin-top: 40px;
     padding-right: 20px;
     border: 1px solid rgba(256, 256, 256, .2);
     background-color: rgba(255, 255, 255, 1);
     box-shadow: 0 0 20px rgba(256, 256, 256, .1);
+
+}
+.cart-item-title {
+    width: 300px;
+    text-align: center;
+    font-size: 24px;
     text-decoration: none;
 }
-.cart-item-title, .cart-item-amount {
-    width: 250px;
+
+.cart-item-amount {
+    width: 100px;
     text-align: center;
-    color: black;
     font-size: 24px;
 }
 .cart-item-img {
