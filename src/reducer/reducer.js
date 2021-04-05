@@ -1,8 +1,8 @@
-import gazp from "../images/Gazprom-Logo-rus.svg"
-import rosn from "../images/Rosneft_Logo.svg"
-import lkoh from "../images/LUK_OIL_Logo_kyr.svg"
-import tatn from "../images/Tatneft-Logo.svg"
-import rnft from "../images/ruusneft.svg"
+import gazp from "../images/Gazprom-Logo-rus.svg";
+import rosn from "../images/Rosneft_Logo.svg";
+import lkoh from "../images/LUK_OIL_Logo_kyr.svg";
+import tatn from "../images/Tatneft-Logo.svg";
+import rnft from "../images/ruusneft.svg";
 
 const initialState = {
     shareArr: null,
@@ -122,14 +122,27 @@ const reducer = (state = initialState, action) => {
         case "ITEM_REMOVE_IN_BASKET":
             const removeIdFromBasket = action.payload;
             const removeIndexFromBasket = state.basket.findIndex(item => item.id === removeIdFromBasket);
-            return {
-                ...state,
-                basket: [
-                    ...state.basket.slice(0, removeIndexFromBasket),
-                    {...state.basket[removeIndexFromBasket], amount: state.basket[removeIndexFromBasket].amount - 1},
-                    ...state.basket.slice(removeIndexFromBasket + 1)
-                ]
-            };
+            if (state.basket[removeIndexFromBasket].amount === 1) {
+                return {
+                    ...state,
+                    basket: [
+                        ...state.basket.slice(0, removeIndexFromBasket),
+                        ...state.basket.slice(removeIndexFromBasket + 1)
+                    ]
+                };
+            } else {
+                return {
+                    ...state,
+                    basket: [
+                        ...state.basket.slice(0, removeIndexFromBasket),
+                        {
+                            ...state.basket[removeIndexFromBasket],
+                            amount: state.basket[removeIndexFromBasket].amount - 1
+                        },
+                        ...state.basket.slice(removeIndexFromBasket + 1)
+                    ]
+                };
+            }
 
         default:
             return state;
