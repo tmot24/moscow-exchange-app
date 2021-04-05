@@ -2,7 +2,7 @@ import React from "react";
 import {useSelector} from "react-redux";
 import {MenuItem} from "../menu-item/menuItem";
 import "./home.css";
-import Box from '@material-ui/core/Box';
+import {Paper} from "@material-ui/core";
 
 export function Home() {
     const menu = useSelector(state => state.menu);
@@ -11,11 +11,11 @@ export function Home() {
     return (
         <>
             <div className={"greeting"}>
-                <Box className={"greeting_box"}>
+                <Paper elevation={9} className={"greeting_paper"}>
                     <span>КУПИТЬ АКЦИИ</span>
                     <p>ВЕДУЩИХ НЕФТЯНЫХ<br/>КОМПАНИЙ РОССИИ</p>
                     <span>ЛЕГКО</span>
-                </Box>
+                </Paper>
             </div>
             <ul>
                 {

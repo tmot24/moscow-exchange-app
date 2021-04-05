@@ -1,35 +1,31 @@
 .greeting {
     width: 100%;
-    height: 600px;
-    background: url("https://pbs.twimg.com/profile_banners/577417652/1554733956/1500x500") no-repeat;
-    -moz-background-size: 100%;
-    -webkit-background-size: 100%;
-    -o-background-size: 100%;
-    -moz-opacity: 0.6;
-    background-size: 100%;
+    height: 500px;
+    background: url("../../images/main.png") no-repeat center local;
+    background-size: cover;
+
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 .greeting span {
-    font-size: 70px;
+    font-size: calc(24px + (16 + 16 * 0.7) * ((100vw - 320px) / 1280));
     font-weight: bold;
+    margin: 0 10px 0 10px;
 }
 .greeting p {
-    font-size: 30px;
+    font-size: calc(16px + (16 * 0.7) * ((100vw - 320px) / 1280));
+    margin: 0 10px 0 10px;
 }
-.greeting_box {
-    background-color: rgba(40, 44, 52, 0.6);
-    width: 600px;
+.greeting_paper {
+    min-width: 270px;
 }
 
 ul {
-    padding: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    color: black;
-    list-style-type: none;
+    padding: 0;
+    margin: 10px;
 }
